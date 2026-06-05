@@ -1,6 +1,11 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import mockRouter from 'next-router-mock';
 import AppBar from '../components/AppBar';
+
+// ActiveLink (rendered inside AppBar) calls useRouter(); mock it so the
+// component renders under jsdom instead of throwing "NextRouter was not mounted".
+jest.mock('next/router', () => require('next-router-mock'));
 
 describe('AppBar.tsx', () => {
   const links = [
@@ -9,20 +14,28 @@ describe('AppBar.tsx', () => {
     { link: '/about', label: 'About' },
   ];
 
-  it('displays title and author on render, but not other properties', () => {
-    render(<AppBar />);
-    links.map((link) => screen.getByText(link.label));
+  beforeEach(() => {
+    mockRouter.setCurrentUrl('/');
   });
 
-  it('navigates to About page when link is clicked', async () => {
+  it('renders a nav link for each destination', () => {
+    render(<AppBar />);
+    links.forEach(({ link, label }) => {
+      expect(screen.getByRole('link', { name: label })).toHaveAttribute(
+        'href',
+        link
+      );
+    });
+  });
+
+  it('marks only the link for the current route as active', () => {
+    mockRouter.setCurrentUrl('/about');
     render(<AppBar />);
 
-    const searchNav = screen.getByText('Search');
-    expect(searchNav).toHaveClass('mantine-1q47gp');
-
-    const aboutNav = screen.getByText('About');
-    const user = userEvent.setup();
-    await user.click(aboutNav);
-    expect(aboutNav).toHaveClass('mantine-1q47gp');
+    // ActiveLink appends activeClassName to the matching route's link, so the
+    // active link's className differs from a non-matching one.
+    const about = screen.getByRole('link', { name: 'About' });
+    const search = screen.getByRole('link', { name: 'Search' });
+    expect(about.className).not.toEqual(search.className);
   });
 });

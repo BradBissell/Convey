@@ -23,17 +23,27 @@ export interface StoryQuery {
 export default function Story() {
   const router = useRouter();
   const { snippet, source } = router.query;
-  const { data, error } = useSWR<IllustrationGetResponse>(
-    `/api/illustrations/get?snippet=${snippet}&source=${source}`,
-    fetcher
-  );
 
-  if (error) console.log(error);
+  // Only fetch once the router has parsed the query params, and encode them so
+  // snippets containing &, #, % etc. resolve to the correct DynamoDB key.
+  const key =
+    typeof snippet === 'string' && typeof source === 'string'
+      ? `/api/illustrations/get?snippet=${encodeURIComponent(
+          snippet
+        )}&source=${encodeURIComponent(source)}`
+      : null;
+  const { data, error } = useSWR<IllustrationGetResponse>(key, fetcher);
+
+  if (error) {
+    return (
+      <Container size="md" mt="md">
+        <Text>Sorry, we couldn&apos;t load this story.</Text>
+      </Container>
+    );
+  }
   if (!data) {
     return <LoadingCircle />;
   }
-
-  console.log(data.SK.slice(13));
 
   return (
     <>

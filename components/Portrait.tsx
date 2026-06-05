@@ -5,6 +5,7 @@ import {
   createStyles,
   Text,
 } from '@mantine/core';
+import Link from 'next/link';
 import { IllustrationMeta } from '../types/types';
 
 const IMG_SIZE = 250;
@@ -37,21 +38,31 @@ interface PortraitProps {
 export default function Portrait({ meta }: PortraitProps) {
   const { classes } = useStyles();
 
-  const snippet = meta.PK.slice(13) + '...';
+  // PK is `Illustration#<snippet>` (13-char prefix); SK is `Meta#<sourceUrl>`,
+  // and meta.link is that same source url. The /story VDP looks the record up by
+  // these two values. Next's Link query object handles URL-encoding.
+  const snippetKey = meta.PK.slice(13);
+  const snippet = snippetKey + '...';
   return (
     <Box sx={{ width: IMG_SIZE }}>
-      <BackgroundImage
-        src={`/portraits/${meta.image}`}
-        component="a"
-        href={meta.link}
-        className={classes.background}
+      <Link
+        href={{
+          pathname: '/story',
+          query: { snippet: snippetKey, source: meta.link },
+        }}
+        style={{ textDecoration: 'none' }}
       >
-        <Box sx={{ width: IMG_SIZE, height: IMG_SIZE }}>
-          <Center p="md" className={classes.text}>
-            <Text>{snippet}</Text>
-          </Center>
-        </Box>
-      </BackgroundImage>
+        <BackgroundImage
+          src={`/portraits/${meta.image}`}
+          className={classes.background}
+        >
+          <Box sx={{ width: IMG_SIZE, height: IMG_SIZE }}>
+            <Center p="md" className={classes.text}>
+              <Text>{snippet}</Text>
+            </Center>
+          </Box>
+        </BackgroundImage>
+      </Link>
     </Box>
   );
 }
