@@ -16,6 +16,11 @@ const ContentSecurityPolicy = [
   "img-src 'self' data: blob:",
   "font-src 'self' data:",
   "connect-src 'self'",
+  // The /explore graph (graphology ForceAtlas2 + Sigma) runs its layout in a
+  // Web Worker created from a blob: URL. Allow blob workers explicitly —
+  // otherwise worker-src falls back to script-src and the worker is blocked.
+  "worker-src 'self' blob:",
+  "child-src 'self' blob:",
   "object-src 'none'",
 ].join('; ');
 
