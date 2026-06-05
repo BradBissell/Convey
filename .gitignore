@@ -26,7 +26,12 @@ yarn-error.log*
 .pnpm-debug.log*
 
 # local env files
-.env*.local
+.env
+.env*
+!.env.example
+
+# windows alternate-data-stream artifacts
+*:Zone.Identifier
 
 # vercel
 .vercel

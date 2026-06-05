@@ -17,7 +17,16 @@ export const loadByKeyword = async (
     ? JSON.parse(decodeURIComponent(lastItem))
     : undefined;
   const key = isString(keyword) ? keyword : '';
-  const limitSize = isString(pageSize) ? Number(pageSize) : 20;
+
+  // Clamp the client-supplied page size to a sane range so a caller can't drive
+  // up DynamoDB read costs with an arbitrarily large Limit (cost-amplification).
+  const DEFAULT_PAGE_SIZE = 20;
+  const MAX_PAGE_SIZE = 100;
+  const parsedPageSize = isString(pageSize) ? Number(pageSize) : NaN;
+  const limitSize =
+    Number.isFinite(parsedPageSize) && parsedPageSize > 0
+      ? Math.min(Math.floor(parsedPageSize), MAX_PAGE_SIZE)
+      : DEFAULT_PAGE_SIZE;
 
   try {
     const params = {
