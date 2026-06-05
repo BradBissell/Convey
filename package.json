@@ -1,7 +1,26 @@
 {
-  "name": "illustration-finder",
+  "name": "convey",
   "version": "0.1.0",
   "private": true,
+  "description": "Search 7,000+ human interest stories by keyword to find compelling illustrations for speaking and writing. Next.js + DynamoDB single-table design with an inverted index.",
+  "homepage": "https://illustration-finder-hony.vercel.app/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BradBissell/Convey.git"
+  },
+  "author": "Brad Bissell",
+  "license": "MIT",
+  "keywords": [
+    "nextjs",
+    "typescript",
+    "dynamodb",
+    "aws",
+    "mantine",
+    "swr",
+    "graph-visualization",
+    "serverless",
+    "nlp"
+  ],
   "engines": {
     "node": "24.x"
   },
@@ -12,7 +31,8 @@
     "start:msw": "NEXT_PUBLIC_API_MOCKING=enabled next start",
     "lint": "next lint",
     "cypress": "cypress open",
-    "test": "jest --watch",
+    "test": "jest",
+    "test:watch": "jest --watch",
     "jest-preview": "jest-preview"
   },
   "dependencies": {
@@ -37,13 +57,13 @@
     "@types/react": "18.0.26",
     "@types/react-dom": "18.0.9",
     "eslint": "8.29.0",
-    "eslint-config-next": "13.5.11",
+    "eslint-config-next": "^14.2.0",
     "graphology": "^0.25.1",
     "graphology-layout": "^0.6.1",
     "graphology-layout-forceatlas2": "^0.10.1",
     "graphology-types": "^0.24.5",
     "lodash": "^4.17.21",
-    "next": "13.5.11",
+    "next": "^14.2.0",
     "postcss": "^8.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
