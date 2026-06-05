@@ -1347,6 +1347,11 @@
   resolved "https://registry.yarnpkg.com/@react-sigma/core/-/core-3.4.0.tgz#6da4b09d823b3520feb5948d6ca195843b770b8b"
   integrity sha512-IfP3tMqYHgdrTG4Pc3xqAb8xqwScMjQfhAfLt1yGNiBPaFuunxGOmDEZ8Q6/DQMqkkTksxq4C30W3C7aRC42Tg==
 
+"@react-sigma/core@^5.0.6":
+  version "5.0.6"
+  resolved "https://registry.yarnpkg.com/@react-sigma/core/-/core-5.0.6.tgz#2c57b9ffcfb652f2e99898a922b4ec32fc22bd18"
+  integrity sha512-Xu2qXyvDZIhmvGC1n8d7Kcxm5Ntcz4HbPIM7CPDD2e4h3s/oxVpVPX7wtsNreJRRPj9mK+3oqB6SWXNI4mTqVg==
+
 "@react-sigma/layout-circlepack@^3.1.0":
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/@react-sigma/layout-circlepack/-/layout-circlepack-3.4.0.tgz#b6adad75cbb436e74ccb408c24016778c6163cb0"
@@ -1368,6 +1373,13 @@
   dependencies:
     "@react-sigma/core" "^3.4.0"
 
+"@react-sigma/layout-core@^5.0.6":
+  version "5.0.6"
+  resolved "https://registry.yarnpkg.com/@react-sigma/layout-core/-/layout-core-5.0.6.tgz#0c392ff1523e954483e4ff867eaa7c6c4f469470"
+  integrity sha512-69ec5IrzJamrzSuccBwnjvse2dMmIUGmoxlFnOIoAhqqpNVEnzsrwVRd5G13tAdk30FyxvKw/E1dEgOP8lQM8g==
+  dependencies:
+    "@react-sigma/core" "^5.0.6"
+
 "@react-sigma/layout-forceatlas2@^3.1.0":
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/@react-sigma/layout-forceatlas2/-/layout-forceatlas2-3.4.0.tgz#97a764799c20259248db3b5e28306e7d7c1e4d1c"
@@ -1375,12 +1387,12 @@
   dependencies:
     "@react-sigma/layout-core" "^3.4.0"
 
-"@react-sigma/layout-random@^3.1.0":
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/@react-sigma/layout-random/-/layout-random-3.4.0.tgz#380a455eef0212804dc0ba57fbecb20852506cba"
-  integrity sha512-RY6BaLODTMrYDOR+Gsm+F/2lrGb6Ph96AvlL0Dh0BMtfI7SnhJ/UVdWRWx1nGqpAzy8FB5qW/gXIghI/43mHmg==
+"@react-sigma/layout-random@^5.0.6":
+  version "5.0.6"
+  resolved "https://registry.yarnpkg.com/@react-sigma/layout-random/-/layout-random-5.0.6.tgz#807f4a9cb0d1aa2ca5be832c9a7f0fd1e8ed8366"
+  integrity sha512-eGDeNc65ZufHGfBYqbFJnZQiPi6B0yylhR2d8ueqkrJCzJiF291U+wctcY6HUL/UEfj2uwir/ghj0urzkD6DkA==
   dependencies:
-    "@react-sigma/layout-core" "^3.4.0"
+    "@react-sigma/layout-core" "^5.0.6"
 
 "@rtsao/scc@^1.1.0":
   version "1.1.0"
