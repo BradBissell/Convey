@@ -1347,12 +1347,17 @@
   resolved "https://registry.yarnpkg.com/@react-sigma/core/-/core-3.4.0.tgz#6da4b09d823b3520feb5948d6ca195843b770b8b"
   integrity sha512-IfP3tMqYHgdrTG4Pc3xqAb8xqwScMjQfhAfLt1yGNiBPaFuunxGOmDEZ8Q6/DQMqkkTksxq4C30W3C7aRC42Tg==
 
-"@react-sigma/layout-circlepack@^3.1.0":
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/@react-sigma/layout-circlepack/-/layout-circlepack-3.4.0.tgz#b6adad75cbb436e74ccb408c24016778c6163cb0"
-  integrity sha512-drwm6Y8ops4DAreqLWmmxZXYbCch0ozZtea6HlA0+NO6Lgx70L18EYcJ0Tk6xsKy/LFTJufZw9Yeln1O3RVOtQ==
+"@react-sigma/core@^5.0.6":
+  version "5.0.6"
+  resolved "https://registry.yarnpkg.com/@react-sigma/core/-/core-5.0.6.tgz#2c57b9ffcfb652f2e99898a922b4ec32fc22bd18"
+  integrity sha512-Xu2qXyvDZIhmvGC1n8d7Kcxm5Ntcz4HbPIM7CPDD2e4h3s/oxVpVPX7wtsNreJRRPj9mK+3oqB6SWXNI4mTqVg==
+
+"@react-sigma/layout-circlepack@^5.0.6":
+  version "5.0.6"
+  resolved "https://registry.yarnpkg.com/@react-sigma/layout-circlepack/-/layout-circlepack-5.0.6.tgz#9c56aa4918b1881606717bf179e0c79cd609d5ad"
+  integrity sha512-y9T4NI6UWZogqXAaEPF7akGBmEVxYMw1An5CnxZGyMXmlbbvFjyYBNMkdFJYK+hkq4+0TJRE5qDjBDfLlpHxNw==
   dependencies:
-    "@react-sigma/layout-core" "^3.4.0"
+    "@react-sigma/layout-core" "^5.0.6"
 
 "@react-sigma/layout-circular@^3.1.0":
   version "3.4.0"
@@ -1367,6 +1372,13 @@
   integrity sha512-SgBHf3ftCZ38bmXXitnOXu5nazSX+4XiZbcFs9XUH+G0xwQYlIO4NZI2YFjkMav2dPOcU/sVghdnMpBn+jorwQ==
   dependencies:
     "@react-sigma/core" "^3.4.0"
+
+"@react-sigma/layout-core@^5.0.6":
+  version "5.0.6"
+  resolved "https://registry.yarnpkg.com/@react-sigma/layout-core/-/layout-core-5.0.6.tgz#0c392ff1523e954483e4ff867eaa7c6c4f469470"
+  integrity sha512-69ec5IrzJamrzSuccBwnjvse2dMmIUGmoxlFnOIoAhqqpNVEnzsrwVRd5G13tAdk30FyxvKw/E1dEgOP8lQM8g==
+  dependencies:
+    "@react-sigma/core" "^5.0.6"
 
 "@react-sigma/layout-forceatlas2@^3.1.0":
   version "3.4.0"
