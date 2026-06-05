@@ -16,7 +16,31 @@ Convey seeks to solve this problem.  Using Python scraping and natural language 
 ## Architecture
 Convey is a Next.js responsive web application with the frontend and backend api hosted together on [Vercel]([url](https://vercel.com/)).  The backend api uses the AWS DyanmoDB SDK to query a single DynamoDB table with an inverted index allowing millisecond queries by keyword or illustration. 
 
-![image](https://user-images.githubusercontent.com/13155120/210637141-021f7c3b-89fc-49d7-8cbb-d47ce817c6b1.png)
+```mermaid
+flowchart TD
+    User([User / Browser])
+
+    subgraph Vercel["Vercel — Next.js app"]
+        Pages["Pages<br/>index (SSG) · story · explore · about"]
+        API["API routes<br/>/api/keywords/[keyword]<br/>/api/illustrations/get"]
+    end
+
+    SDK["AWS SDK<br/>DynamoDBDocumentClient"]
+
+    subgraph AWS["AWS"]
+        DDB[("DynamoDB single table<br/>+ Inverted-Index GSI")]
+    end
+
+    subgraph Offline["Offline indexing (Python)"]
+        Scrape["Scrape Humans of New York<br/>+ NLP keyword extraction"]
+    end
+
+    User -->|HTTP| Pages
+    Pages -->|fetch / SWR| API
+    API --> SDK
+    SDK -->|Query / GetItem| DDB
+    Scrape -. seed / load .-> DDB
+```
 
 ## Setup
 Covney is built on top of the (Create Next App framework)[https://nextjs.org/docs/api-reference/create-next-app].  Fork this repo and then install dependencies with `npm install`.
