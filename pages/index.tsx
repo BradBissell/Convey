@@ -1,10 +1,7 @@
 import { Container, createStyles, Text, Title } from '@mantine/core';
 import { useState } from 'react';
-import { SWRConfig } from 'swr';
 import KeywordSearch from '../components/KeywordSearch';
 import Portraits from '../components/Portraits';
-import { loadByKeyword } from '../lib/loadIllustrations';
-import { InferGetStaticPropsType } from 'next';
 
 const useStyles = createStyles((theme) => ({
   section: {
@@ -16,9 +13,12 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export default function Home({
-  fallback,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+// Rendered as a fully static page (no getStaticProps). Portraits fetches the
+// initial results client-side via SWR. Previously this used getStaticProps to
+// seed an SWR fallback, but that produced an SSG "prerender variant" that Vercel
+// served as a raw multipart/RSC body for `/` only. Keeping the page static
+// (like /about) avoids that, and removes a build-time DynamoDB dependency.
+export default function Home() {
   const { classes } = useStyles();
   const [keyword, setKeyword] = useState('college');
 
@@ -35,27 +35,7 @@ export default function Home({
           <KeywordSearch keyword={keyword} setKeyword={setKeyword} />
         </Container>
       </section>
-      <SWRConfig value={{ fallback }}>
-        <Portraits keyword={keyword} />
-      </SWRConfig>
+      <Portraits keyword={keyword} />
     </>
   );
-}
-
-// This function runs only on the server side
-export async function getStaticProps() {
-  // Instead of fetching your `/api` route you can call the same
-  // function directly in `getStaticProps`
-  const illustrations = await loadByKeyword(undefined, 'college', undefined);
-
-  // Props returned will be passed to the page component
-  // prop validation errors on any key set to undefined in data.
-  // Must santize with JSON workaround: https://github.com/vercel/next.js/discussions/11209
-  return {
-    props: {
-      fallback: {
-        '/api/keywords/college': JSON.parse(JSON.stringify(illustrations)),
-      },
-    },
-  };
 }
