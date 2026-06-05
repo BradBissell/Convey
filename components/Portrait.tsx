@@ -7,6 +7,7 @@ import {
 } from '@mantine/core';
 import Link from 'next/link';
 import { IllustrationMeta } from '../types/types';
+import { portraitSrc } from '../lib/imageUrl';
 
 const IMG_SIZE = 250;
 
@@ -53,7 +54,7 @@ export default function Portrait({ meta }: PortraitProps) {
         style={{ textDecoration: 'none' }}
       >
         <BackgroundImage
-          src={`/portraits/${meta.image}`}
+          src={portraitSrc(meta.image)}
           className={classes.background}
         >
           <Box sx={{ width: IMG_SIZE, height: IMG_SIZE }}>

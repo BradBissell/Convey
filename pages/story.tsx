@@ -12,6 +12,7 @@ import useSWR from 'swr';
 import LoadingCircle from '../components/LoadingCircle';
 import { useRouter } from 'next/router';
 import { IllustrationGetResponse } from './api/illustrations/get';
+import { portraitSrc } from '../lib/imageUrl';
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -54,7 +55,7 @@ export default function Story() {
               maw={240}
               mx="auto"
               radius="md"
-              src={`portraits/${data.image}`}
+              src={portraitSrc(data.image)}
               alt="Highlight image"
               m="lg"
             />

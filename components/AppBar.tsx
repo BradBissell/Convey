@@ -8,12 +8,10 @@ import {
   Paper,
   Transition,
   Title,
-  Avatar,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import AppLogo from '/logo.png';
 import Image from 'next/image';
-import Link from 'next/link';
 import ActiveLink from './ActiveLink';
 
 const HEADER_HEIGHT = 60;
@@ -126,7 +124,6 @@ export default function AppBar() {
         <Title>Convey</Title>
         <Group spacing={5} className={classes.links}>
           {items}
-          {/* <Avatar radius={50} color="blue" src={null} alt="no image here" /> */}
         </Group>
         <Burger
           opened={opened}

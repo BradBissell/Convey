@@ -26,7 +26,6 @@ describe('Portraits.tsx', () => {
     await waitForElementToBeRemoved(() => screen.getByTestId('loader'));
 
     const links = screen.getAllByRole('link');
-    console.log(links);
     expect(links.length).toBe(20);
   });
   it('returns error if given invalid keyword', async () => {

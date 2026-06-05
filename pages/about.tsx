@@ -35,7 +35,7 @@ export default function About() {
           The Problem
         </Title>
         <Text className={classes.text}>
-          If you&apos;ve ever sought to publically communicate an idea, whether
+          If you&apos;ve ever sought to publicly communicate an idea, whether
           spoken or written, you&apos;ve likely wrestled with the challenge of
           finding powerful stories to help you communicate your message.
         </Text>
@@ -68,15 +68,15 @@ export default function About() {
         <Text className={classes.text}>
           To that end, Convey allows you to search by thousands of different
           keywords to find human interest stories on that topic. At present
-          Convey includes the 7,000+ fanastic human interest stories collected
+          Convey includes the 7,000+ fantastic human interest stories collected
           by{' '}
           <Anchor href="https://www.humansofnewyork.com/">
             Humans of New York.
           </Anchor>
           {'  '}
-          All rights belong to Brandon Stanton, it&apos;s creator. To help
-          support his project, please note that Convey drives traffic to His
-          site once you click on a story thumbnail.
+          All rights belong to Brandon Stanton, its creator. To help support his
+          project, every story links back to the original on his site via the{' '}
+          <strong>Source</strong> button on each story&apos;s detail page.
         </Text>
       </Container>
     </>
