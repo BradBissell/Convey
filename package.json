@@ -36,8 +36,8 @@
     "jest-preview": "jest-preview"
   },
   "dependencies": {
-    "@aws-sdk/client-dynamodb": "^3.700.0",
-    "@aws-sdk/lib-dynamodb": "^3.700.0",
+    "@aws-sdk/client-dynamodb": "^3.1075.0",
+    "@aws-sdk/lib-dynamodb": "^3.1075.0",
     "@aws-sdk/smithy-client": "^3.374.0",
     "@aws-sdk/types": "^3.973.10",
     "@emotion/react": "^11.14.0",
@@ -68,7 +68,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "sigma": "^2.4.0",
-    "swr": "^2.4.1",
+    "swr": "^2.4.2",
     "typescript": "^5"
   },
   "devDependencies": {
@@ -82,7 +82,7 @@
     "jest-preview": "^0.3.3",
     "msw": "^0.49.2",
     "next-router-mock": "^1.0.5",
-    "whatwg-fetch": "^3.6.2"
+    "whatwg-fetch": "^3.6.20"
   },
   "msw": {
     "workerDirectory": "public"
